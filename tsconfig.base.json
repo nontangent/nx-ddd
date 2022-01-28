@@ -1,0 +1,26 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@platform/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@platform/domain": ["libs/domain/src/index.ts"],
+      "@platform/firestore": ["libs/firestore/src/index.ts"],
+      "@platform/infrastructure": ["libs/infrastructure/src/index.ts"],
+      "@platform/presentation": ["libs/presentation/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

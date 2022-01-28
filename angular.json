@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces",
+    "demo": "apps/demo",
+    "demo-e2e": "apps/demo-e2e",
+    "domain": "libs/domain",
+    "firestore": "libs/firestore",
+    "infrastructure": "libs/infrastructure",
+    "presentation": "libs/presentation"
+  }
+}
