@@ -3,11 +3,11 @@
   "projects": {
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
+    "common": "libs/common",
     "demo": "apps/demo",
     "demo-e2e": "apps/demo-e2e",
     "domain": "libs/domain",
     "firestore": "libs/firestore",
-    "infrastructure": "libs/infrastructure",
-    "presentation": "libs/presentation"
+    "infrastructure": "libs/infrastructure"
   }
 }

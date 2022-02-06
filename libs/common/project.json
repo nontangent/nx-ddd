@@ -1,20 +1,20 @@
 {
-  "root": "libs/presentation",
-  "sourceRoot": "libs/presentation/src",
+  "root": "libs/common",
+  "sourceRoot": "libs/common/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/presentation/**/*.ts"]
+        "lintFilePatterns": ["libs/common/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/presentation"],
+      "outputs": ["coverage/libs/common"],
       "options": {
-        "jestConfig": "libs/presentation/jest.config.js",
+        "jestConfig": "libs/common/jest.config.js",
         "passWithNoTests": true
       }
     }
