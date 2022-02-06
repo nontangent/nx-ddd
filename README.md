@@ -6,15 +6,15 @@ This project was generated using [Nx](https://nx.dev).
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
-🔎 **Smart, Fast and Extensible Build System**
+🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
 
 ## Quick Start & Documentation
 
 [Nx Documentation](https://nx.dev/angular)
 
-[10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
+[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
 
-[Interactive Tutorial](https://nx.dev/tutorial/01-create-application)
+[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
 
 ## Adding capabilities to your workspace
 
@@ -37,7 +37,7 @@ Below are our core plugins:
 - [Node](https://nodejs.org)
   - `ng add @nrwl/node`
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+There are also many [community plugins](https://nx.dev/nx-community) you could add.
 
 ## Generate an application
 
@@ -81,7 +81,7 @@ Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
 
 ## Understand your workspace
 
-Run `nx graph` to see a diagram of the dependencies of your projects.
+Run `nx dep-graph` to see a diagram of the dependencies of your projects.
 
 ## Further help
 
@@ -94,7 +94,7 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 
 ## ☁ Nx Cloud
 
-### Distributed Computation Caching & Distributed Task Execution
+### Computation Memoization in the Cloud
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
 
