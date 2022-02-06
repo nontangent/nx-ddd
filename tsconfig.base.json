@@ -15,7 +15,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@platform/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@platform/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@nx-ddd/common": ["libs/common/src/index.ts"],
+      "@nx-ddd/common/*": ["libs/common/src/*"],
+      "@nx-ddd/firestore": ["libs/firestore/src/index.ts"],
+      "@nx-ddd/firestore/*": ["libs/firestore/src/*"],
+      "@nx-ddd/domain": ["libs/domain/src/index.ts"],
+      "@nx-ddd/infrastructure": ["libs/infrastructure/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

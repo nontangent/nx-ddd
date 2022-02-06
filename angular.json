@@ -206,6 +206,137 @@
           }
         }
       }
+    },
+    "common": {
+      "root": "libs/common",
+      "sourceRoot": "libs/common/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/common/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common"],
+          "options": {
+            "jestConfig": "libs/common/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/common",
+            "tsConfig": "libs/common/tsconfig.lib.json",
+            "packageJson": "libs/common/package.json",
+            "main": "libs/common/src/index.ts",
+            "assets": ["libs/common/*.md"],
+            "srcRootForCompilationRoot": "libs/common/src"
+          }
+        }
+      }
+    },
+    "firestore": {
+      "root": "libs/firestore",
+      "sourceRoot": "libs/firestore/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/firestore/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/firestore"],
+          "options": {
+            "jestConfig": "libs/firestore/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/firestore",
+            "tsConfig": "libs/firestore/tsconfig.lib.json",
+            "packageJson": "libs/firestore/package.json",
+            "main": "libs/firestore/src/index.ts",
+            "assets": ["libs/firestore/*.md"],
+            "buildableProjectDepsInPackageJsonType": "peerDependencies",
+            "srcRootForCompilationRoot": "libs/firestore/src"
+          }
+        }
+      }
+    },
+    "domain": {
+      "root": "libs/domain",
+      "sourceRoot": "libs/domain/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/domain/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/domain"],
+          "options": {
+            "jestConfig": "libs/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/domain",
+            "tsConfig": "libs/domain/tsconfig.lib.json",
+            "packageJson": "libs/domain/package.json",
+            "main": "libs/domain/src/index.ts",
+            "assets": ["libs/domain/*.md"]
+          }
+        }
+      }
+    },
+    "infrastructure": {
+      "root": "libs/infrastructure",
+      "sourceRoot": "libs/infrastructure/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/infrastructure/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/infrastructure"],
+          "options": {
+            "jestConfig": "libs/infrastructure/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/infrastructure",
+            "tsConfig": "libs/infrastructure/tsconfig.lib.json",
+            "packageJson": "libs/infrastructure/package.json",
+            "main": "libs/infrastructure/src/index.ts",
+            "assets": ["libs/infrastructure/*.md"]
+          }
+        }
+      }
     }
   }
 }
