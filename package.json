@@ -32,12 +32,12 @@
     "link:firestore": "cd dist/libs/firestore && npm link"
   },
   "dependencies": {
-    "@aginix/nestjs-firebase-admin": "^2.2.0",
+    "@aginix/nestjs-firebase-admin": "^2.0.0",
     "@angular/animations": "^11.2.0",
     "@angular/common": "^11.2.0",
     "@angular/compiler": "^11.2.0",
     "@angular/core": "^11.2.0",
-    "@angular/fire": "6.1",
+    "@angular/fire": "^6.0.0",
     "@angular/forms": "^11.2.0",
     "@angular/platform-browser": "^11.2.0",
     "@angular/platform-browser-dynamic": "^11.2.0",
@@ -46,10 +46,10 @@
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
     "@nrwl/angular": "11.6.3",
-    "firebase": "^8.10.1",
-    "firebase-admin": "^9.12.0",
+    "firebase": "^7.0 || ^8.0",
+    "firebase-admin": "^9.0.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "~6.6.3",
+    "rxjs": "~6.0.0",
     "tslib": "^2.0.0",
     "zone.js": "^0.10.2"
   },
