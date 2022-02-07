@@ -10,7 +10,7 @@ import {
   DocumentSnapshot, 
   FirestoreData,
 } from './interfaces';
-import { BaseFirestoreDateAdapter, FirestoreAdapter, FirestoreFieldsAdapter } from './adapters';
+import { FirestoreAdapter } from './firestore.adapter';
 
 
 const action = <T extends {id: string}>(
@@ -25,18 +25,14 @@ const toPromise = callback => new Promise<ReturnType<typeof callback>>(async (re
   try { resolve(callback()); } catch (error) { reject(error); }
 });
 
-export abstract class CommonFirestoreRepository<Entity extends {id: string}, Data extends object, Date> {
+export abstract class FirestoreRepository<Entity extends {id: string}, Data extends object, Date> {
   protected abstract Entity: FirestoreEntityConstructor<Entity, Data>;
 
   protected abstract buildCollectionPath: (paramMap?: Partial<Entity>) => string;
   protected abstract buildCollectionGroupPath: (paramMap?: Partial<Entity>) => string;
   protected abstract buildDocPath: (paramMap: Partial<Entity>) => string;
 
-  constructor(
-    private _firestore: FirestoreAdapter,
-    private _fields: FirestoreFieldsAdapter,
-    private _date: BaseFirestoreDateAdapter<Date>,
-  ) { }
+  constructor(public adapter: FirestoreAdapter<Date>) { }
 
   private _list$: Observable<Entity[]>;
   get list$(): Observable<Entity[]> {
@@ -88,17 +84,17 @@ export abstract class CommonFirestoreRepository<Entity extends {id: string}, Dat
 
   protected collection(paramMap?: Partial<Entity>): CommonFirestoreCollection<Data> {
     const path = this.buildCollectionPath(paramMap)
-    return this._firestore.collection<Data>(path);
+    return this.adapter.collection<Data>(path);
   }
 
   protected collectionGroup(paramMap?: Partial<Entity>): CommonFirestoreCollectionGroup<Data> {
     const path = this.buildCollectionGroupPath(paramMap);
-    return this._firestore.collectionGroup<Data>(path);
+    return this.adapter.collectionGroup<Data>(path);
   }
 
   protected doc(paramMap: Partial<Entity>): CommonFirestoreDocument<Data> {
     const path = this.buildDocPath(paramMap);
-    return this._firestore.doc<Data>(path);
+    return this.adapter.doc<Data>(path);
   }
 
   protected _listChanges(
@@ -142,22 +138,16 @@ export abstract class CommonFirestoreRepository<Entity extends {id: string}, Dat
   }
 
   protected buildServerTimestampObject(keys: string[] = ['createdAt', 'updatedAt']) {
-    return keys.reduce((m, k) => ({...m, [k]: this._fields.FieldValue.serverTimestamp()}), {});
+    return keys.reduce((m, k) => ({...m, [k]: this.adapter.FieldValue.serverTimestamp()}), {});
   }
 
   protected get converter() {
     return {
-      fromFirestore: (doc: DocumentSnapshot<Data>) => {
-        const data = this.Entity.fromFirestoreDoc(({
-          id: doc.id, ref: { path: doc.ref.path }, 
-          data: () => this._date.fromFirestore<Data>(doc.data() as FirestoreData<Data, Date>),
-        }));
-        return data;
-      },
-      toFirestore: (entity: Entity) => {
-        const data = pick(this._date.toFirestore(entity), this.Entity.FIELDS) as Data;
-        return data;
-      },
+      fromFirestore: (doc: DocumentSnapshot<Data>) => this.Entity.fromFirestoreDoc(({
+        id: doc.id, ref: { path: doc.ref.path }, 
+        data: () => this.adapter.fromFirestore<Data>(doc.data() as FirestoreData<Data, Date>),
+      })),
+      toFirestore: (entity: Entity) => pick(this.adapter.toFirestore(entity), this.Entity.FIELDS) as Data,
     }
   }
 

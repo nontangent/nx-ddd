@@ -1,16 +1,16 @@
-import { FirebaseFirestoreService } from '@aginix/nestjs-firebase-admin';
-import {
-  CommonFirestoreDocument,
+import { 
+  CommonFirestoreDocument, 
   CommonFirestoreCollection, 
-  CommonFirestoreCollectionGroup,
+  CommonFirestoreCollectionGroup, 
   DocumentSnapshot,
   DocumentChangeAction, 
-  QuerySnapshot,
   FirestoreAdapter as _FirestoreAdapter,
   Timestamp,
+  QuerySnapshot,
 } from '@nx-ddd/firestore/common';
 import * as dayjs from 'dayjs';
 import { from, Observable, of } from 'rxjs';
+import { firestore } from 'firebase-admin';
 
 
 export const convertDocRef = <Data>(
@@ -43,11 +43,9 @@ export const convertCollectionGroupRef = <Data>(
   }
 }
 
-export class FirestoreAdapter<Data> extends _FirestoreAdapter<dayjs.Dayjs> {
-
-  constructor(public nestFire: FirebaseFirestoreService) {
-    super(nestFire.firestore)
-  }
+export class FirestoreAdapter extends _FirestoreAdapter<dayjs.Dayjs> {
+  
+  constructor(firestore: firestore.Firestore) { super(firestore) };
 
   protected isDate(v: any): v is dayjs.Dayjs {
     return dayjs.isDayjs(v);
@@ -62,25 +60,26 @@ export class FirestoreAdapter<Data> extends _FirestoreAdapter<dayjs.Dayjs> {
   }
 
   doc<Data>(path: string) {
-    return convertDocRef<Data>(this.nestFire.doc(path) as any);
-  }
-  
-  collection<Data>(path: string) {
-    return convertCollectionRef<Data>(this.nestFire.collection(path) as any);
-  }
-  
-  collectionGroup<Data>(path: string) {
-    return convertCollectionGroupRef<Data>(this.nestFire.collectionGroup(path) as any);
+    return convertDocRef<Data>(this._firestore.doc(path) as any);
   }
 
-  bulkWriter = () => ({
+  collection = <Data>(path: string) => {
+    return convertCollectionRef<Data>(this._firestore.collection(path) as any);
+  }
+
+  collectionGroup<Data>(path: string) {
+    return convertCollectionGroupRef<Data>(this._firestore.collectionGroup(path) as any);
+  }
+
+  bulkWriter = <Data>() => ({
     update: (doc: CommonFirestoreDocument<Data>, data : Data) => {
-      this.nestFire.bulkWriter().update(doc.__ref, data)
+      this._firestore.bulkWriter().update(doc.__ref, data)
     },
-    close: () => this.nestFire.bulkWriter().close(),
+    close: () => this._firestore.bulkWriter().close(),
   });
+
 }
 
-export function createFirestoreAdapter(firestore: FirebaseFirestoreService) {
+export function createFirestoreAdapter(firestore: firestore.Firestore) {
   return new FirestoreAdapter(firestore);
 }
