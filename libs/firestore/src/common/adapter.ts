@@ -7,7 +7,10 @@ import {
 } from "./interfaces";
 
 export abstract class FirestoreAdapter<Date> {
-  constructor (protected _firestore) { }
+  constructor (
+    protected firestoreInstance,
+    protected _firestore,
+  ) { }
 
   get Timestamp() {
     return this._firestore.Timestamp;
@@ -16,6 +19,7 @@ export abstract class FirestoreAdapter<Date> {
   get FieldValue() {
     return this._firestore.FieldValue;
   }
+
 
   abstract doc<Data>(path: string): CommonFirestoreDocument<Data>;
   abstract collection<Data>(path: string): CommonFirestoreCollection<Data>;

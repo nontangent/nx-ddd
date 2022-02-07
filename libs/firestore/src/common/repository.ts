@@ -10,7 +10,7 @@ import {
   DocumentSnapshot, 
   FirestoreData,
 } from './interfaces';
-import { FirestoreAdapter } from './firestore.adapter';
+import { FirestoreAdapter } from './adapter';
 
 
 const action = <T extends {id: string}>(

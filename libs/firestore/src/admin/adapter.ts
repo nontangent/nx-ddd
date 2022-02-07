@@ -45,7 +45,12 @@ export const convertCollectionGroupRef = <Data>(
 
 export class FirestoreAdapter extends _FirestoreAdapter<dayjs.Dayjs> {
   
-  constructor(firestore: firestore.Firestore) { super(firestore) };
+  constructor(
+    firestoreInstance: firestore.Firestore,
+    firestore: any,
+  ) {
+    super(firestoreInstance, firestore);
+  }
 
   protected isDate(v: any): v is dayjs.Dayjs {
     return dayjs.isDayjs(v);
@@ -80,6 +85,9 @@ export class FirestoreAdapter extends _FirestoreAdapter<dayjs.Dayjs> {
 
 }
 
-export function createFirestoreAdapter(firestore: firestore.Firestore) {
-  return new FirestoreAdapter(firestore);
+export function createFirestoreAdapter(
+  firestoreInstance: firestore.Firestore,
+  firestore: any,
+) {
+  return new FirestoreAdapter(firestoreInstance, firestore);
 }

@@ -5,7 +5,12 @@ import firebase from 'firebase';
 
 export class FirestoreAdapter extends _FirestoreAdapter<dayjs.Dayjs> {
   
-  constructor(_firestore: firebase.firestore.Firestore) { super(_firestore) };
+  constructor(
+    firestoreInstance: firebase.firestore.Firestore,
+    firestore: any,
+  ) {
+    super(firestoreInstance, firestore);
+  };
 
   protected isDate(v: any): v is dayjs.Dayjs {
     return dayjs.isDayjs(v);
@@ -20,19 +25,22 @@ export class FirestoreAdapter extends _FirestoreAdapter<dayjs.Dayjs> {
   }
 
   doc<Data>(path: string) {
-    return this._firestore.doc(path);
+    return this.firestoreInstance.doc(path);
   }
 
   collection<Data>(path: string) {
-    return this._firestore.collection(path);
+    return this.firestoreInstance.collection(path);
   }
 
   collectionGroup<Data>(path: string) {
-    return this._firestore.collectionGroup(path);
+    return this.firestoreInstance.collectionGroup(path);
   }
 
 }
 
-export function createFirestoreAdapter(firestore: firebase.firestore.Firestore) {
-  return new FirestoreAdapter(firestore);
+export function createFirestoreAdapter(
+  firestoreInstance: firebase.firestore.Firestore,
+  firestore: any,
+) {
+  return new FirestoreAdapter(firestoreInstance, firestore);
 }
