@@ -65,22 +65,22 @@ export class FirestoreAdapter extends _FirestoreAdapter<dayjs.Dayjs> {
   }
 
   doc<Data>(path: string) {
-    return convertDocRef<Data>(this._firestore.doc(path) as any);
+    return convertDocRef<Data>(this.firestoreInstance.doc(path) as any);
   }
 
   collection = <Data>(path: string) => {
-    return convertCollectionRef<Data>(this._firestore.collection(path) as any);
+    return convertCollectionRef<Data>(this.firestoreInstance.collection(path) as any);
   }
 
   collectionGroup<Data>(path: string) {
-    return convertCollectionGroupRef<Data>(this._firestore.collectionGroup(path) as any);
+    return convertCollectionGroupRef<Data>(this.firestoreInstance.collectionGroup(path) as any);
   }
 
   bulkWriter = <Data>() => ({
     update: (doc: CommonFirestoreDocument<Data>, data : Data) => {
-      this._firestore.bulkWriter().update(doc.__ref, data)
+      this.firestoreInstance.bulkWriter().update(doc.__ref, data)
     },
-    close: () => this._firestore.bulkWriter().close(),
+    close: () => this.firestoreInstance.bulkWriter().close(),
   });
 
 }
