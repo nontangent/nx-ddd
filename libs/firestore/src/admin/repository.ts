@@ -4,8 +4,6 @@ import {
 } from '@nx-ddd/firestore/common';
 import * as dayjs from 'dayjs';
 import { FirestoreAdapter } from './adapter';
-import { FirestoreDayJsAdapter as _FirestoreDayJsAdapter} from '../dayjs';
-
 
 export abstract class AdminFirestoreRepository<
   Entity extends {id: string},

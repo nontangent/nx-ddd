@@ -1,26 +1,21 @@
+import { FirestoreRepository } from '@nx-ddd/firestore/common';
 import * as dayjs from 'dayjs';
-import { CommonFirestoreRepository } from '../common/repository';
-import { FirestoreDayJsAdapter as _FirestoreDayJsAdapter} from '../dayjs';
-import { AdminFirestoreAdapter } from '../admin/interfaces';
-import { FieldsFirestoreAdapter, FirestoreDayJsAdapter } from '../admin';
+import { FirestoreAdapter } from './adapter';
+
 
 export abstract class AdminFirestoreRepository<
   Entity extends {id: string},
   Data extends object,
-> extends CommonFirestoreRepository<Entity, Data, dayjs.Dayjs> {
+> extends FirestoreRepository<Entity, Data, dayjs.Dayjs> {
 
-  constructor(protected firestore: AdminFirestoreAdapter<Data>) {
-    super(firestore, new FieldsFirestoreAdapter(), new FirestoreDayJsAdapter());
-  };
+  constructor(adapter: FirestoreAdapter<Data>) { super(adapter); }
 
   async bulkUpdate(entities: (Partial<Entity>)[]): Promise<void> {
     return entities.reduce((bulkWriter, entity) => {
       const path = this.buildDocPath(entity);
-      const doc = this.firestore.doc<Data>(path);
+      const doc = this.adapter.doc<Data>(path);
 
-      
-      this.firestore.bulkWriter()
-
+      (this.adapter as FirestoreAdapter<Data>).bulkWriter();
 
       bulkWriter.update(doc, {
         // TODO: 型
@@ -28,6 +23,6 @@ export abstract class AdminFirestoreRepository<
         ...this.buildServerTimestampObject(['updatedAt']),
       });
       return bulkWriter;
-    }, this.firestore.bulkWriter()).close();
+    }, (this.adapter as FirestoreAdapter<Data>).bulkWriter()).close();
   }
 }
