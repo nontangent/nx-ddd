@@ -30,6 +30,8 @@ jobs:
         with:
           node-version: 16.x
           cache: npm
+      - name: Install node packages
+        run: npm ci
       - name: Download production artifacts
         uses: actions/download-artifact@v2
       - env:
