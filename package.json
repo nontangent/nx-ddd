@@ -111,15 +111,7 @@
           "npmPublish": false
         }
       ],
-      [
-        "@semantic-release/github",
-        {
-          "assets": [
-            "dist/libs/common",
-            "dist/libs/firestore"
-          ]
-        }
-      ],
+      "@semantic-release/github",
       [
         "@semantic-release/git",
         {

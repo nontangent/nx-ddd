@@ -1,0 +1,26 @@
+name: Publish
+on:
+  workflow_run:
+    workflows:
+      - Release
+    branches:
+      - main
+    types:
+      - completed
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - name: Echo Version
+        run: echo ${{ github.event.release.tag_name }}
+      # - run: npm ci
+      # - run: npx nx build firestore --with-deps
+      # - run: PACKAGE_VERSION=$(node -pe 'require(\"./package.json\")[\"version\"]')
+      # - env:
+      #     GITHUB_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #   run: npm version --tag=
