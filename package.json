@@ -115,7 +115,8 @@
         "@semantic-release/github",
         {
           "assets": [
-            "dist/**"
+            "dist/libs/common",
+            "dist/libs/firestore"
           ]
         }
       ],
