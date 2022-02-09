@@ -37,6 +37,8 @@ jobs:
       - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
+      - name: is version updated
+        run: 'test "$(git show -s --format=%s)" = "chore(release): $(git describe --tags --abbrev=0)"; echo $?'
   publish:
     name: Publish
     runs-on: ubuntu-18.04
