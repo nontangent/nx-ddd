@@ -20,8 +20,12 @@ jobs:
         run: echo PACKAGE_VERSION=$(node -pe 'require("./package.json")["version"]') >> $GITHUB_ENV
       - run: npm ci
       - run: npx nx build firestore --with-deps
-      - run: PACKAGE_VERSION=$(node -pe 'require(\"./package.json\")[\"version\"]')
-      - name: Set Package Version
+      - name: Publish @nx-ddd/common
         env:
-          GITHUB_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: echo PACKAGE_VERSION
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run publish:common
+      - name: Publish @nx-ddd/firestore
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run publish:firestore
+        
