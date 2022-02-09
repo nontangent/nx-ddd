@@ -1,6 +1,6 @@
 {
   "name": "platform",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "nx",
@@ -111,6 +111,7 @@
           "npmPublish": false
         }
       ],
+      "@semantic-release/github",
       [
         "@semantic-release/git",
         {

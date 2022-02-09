@@ -16,11 +16,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16.x
-      - name: Echo Version
-        run: echo ${{ github.event.release.tag_name }}
-      # - run: npm ci
-      # - run: npx nx build firestore --with-deps
-      # - run: PACKAGE_VERSION=$(node -pe 'require(\"./package.json\")[\"version\"]')
-      # - env:
-      #     GITHUB_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #   run: npm version --tag=
+      - name: Set Package Version to Environment
+        run: echo PACKAGE_VERSION=$(node -pe 'require("./package.json")["version"]') >> $GITHUB_ENV
+      - run: npm ci
+      - run: npx nx build firestore --with-deps
+      - run: PACKAGE_VERSION=$(node -pe 'require(\"./package.json\")[\"version\"]')
+      - name: Set Package Version
+        env:
+          GITHUB_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: echo PACKAGE_VERSION
