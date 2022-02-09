@@ -12,17 +12,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          # cache: npm
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-${{ env.cache-name }}-
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
-      - run: npm ci
+          cache: npm
+      - run: npm i
       - run: npx nx build firestore --with-deps
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
@@ -38,18 +29,9 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          # cache: npm
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-${{ env.cache-name }}-
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+          cache: npm
       - name: Install node packages
-        run: npm ci
+        run: npm i
       - name: Download production artifacts
         uses: actions/download-artifact@v2
       - env:
@@ -65,7 +47,7 @@ jobs:
         with:
           node-version: 16.x
           registry-url: 'https://registry.npmjs.org'
-          # cache: npm
+          cache: npm
       - name: Download production artifacts
         uses: actions/download-artifact@v2
       - name: Set Package Version to Environment
