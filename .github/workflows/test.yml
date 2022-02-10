@@ -22,14 +22,8 @@ jobs:
       - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
-      - name: LAST_COMMIT_MESSAGE
-        run: |
-          echo "$(git show -s --format=%s)"
-      - name: LAST_TAG
-        run: |
-          echo "chore(release): $(git describe --tags --abbrev=0)"
       - id: result
-        run: echo "::set-output name=is_released::$(sh ./.github/scripts/is-released)"
+        run: is_released=$(sh ./.github/scripts/is-released); echo "::set-output name=is_released::$is_released"
   publish:
     name: Publish
     runs-on: ubuntu-18.04
