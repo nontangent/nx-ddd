@@ -1,18 +1,18 @@
 name: Production
 on: push
 jobs:
-  build:
+  release:
     name: Build
     runs-on: ubuntu-18.04
     outputs:
-      is_version_changed: ${{ steps.result.outputs.is_version_changed }}
+      is_released: ${{ steps.result.outputs.is_released }}
     steps:
       - uses: actions/checkout@v2
       - id: result
-        run: echo "::set-output name=is_version_changed::$(sh ./.github/scripts/is-version-changed)"
-  release:
+        run: echo "::set-output name=is_released::$(sh ./.github/scripts/is-released)"
+  publish:
     runs-on: ubuntu-18.04
     needs: build
-    if: ${{needs.build.outputs.is_version_changed == 1}}
+    if: ${{needs.build.outputs.is_released == 1}}
     steps:
-      - run: echo "is_version_changed ${{needs.build.outputs.is_version_changed}}"
+      - run: echo "is_released ${{needs.build.outputs.is_released}}"
