@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 LAST_COMMIT_MESSAGE="$(git show -s --format=%s)";
 LAST_TAG="$(git describe --tags --abbrev=0 --always)";
 
