@@ -11,17 +11,17 @@ jobs:
       is_released: ${{ steps.result.outputs.is_released }}
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
-          cache: npm
-      - name: Install node packages
-        run: npm i
-      - name: Download production artifacts
-        uses: actions/download-artifact@v2
-      - env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+      # - uses: actions/setup-node@v2
+      #   with:
+      #     node-version: 16.x
+      #     cache: npm
+      # - name: Install node packages
+      #   run: npm i
+      # - name: Download production artifacts
+      #   uses: actions/download-artifact@v2
+      # - env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # run: npx semantic-release
       - id: result
         run: is_released=$(sh ./.github/scripts/is-released); echo "::set-output name=is_released::$is_released"
   publish:
