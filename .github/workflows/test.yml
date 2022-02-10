@@ -23,7 +23,7 @@ jobs:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         # run: npx semantic-release
       - id: result
-        run: echo "::set-output name=is_released::$(node .github/scripts/is-released)"
+        run: echo "::set-output name=is_released::$(node .github/scripts/is-released.js)"
   publish:
     name: Publish
     runs-on: ubuntu-18.04
