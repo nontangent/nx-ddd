@@ -2,7 +2,6 @@ name: Production
 on: push
 jobs:
   release:
-    name: Build
     runs-on: ubuntu-18.04
     outputs:
       is_released: ${{ steps.result.outputs.is_released }}
@@ -12,7 +11,7 @@ jobs:
         run: echo "::set-output name=is_released::$(sh ./.github/scripts/is-released)"
   publish:
     runs-on: ubuntu-18.04
-    needs: build
+    needs: release
     if: ${{needs.build.outputs.is_released == 1}}
     steps:
       - run: echo "is_released ${{needs.build.outputs.is_released}}"
