@@ -17,13 +17,13 @@ jobs:
           cache: npm
       - run: git show -s --format=%s
       - run: git describe --tags --abbrev=0  --always
-      # - name: Install node packages
-      #   run: npm i
+      - name: Install node packages
+        run: npm i
       # - name: Download production artifacts
       #   uses: actions/download-artifact@v2
-      # - env:
-      #    git describe --tags --abbrev=0 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # run: npx semantic-release
+      - env:
+         git describe --tags --abbrev=0 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release
       - id: result
         run: echo "::set-output name=is_released::$(sh .github/scripts/is-released)"
   publish:
