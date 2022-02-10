@@ -8,7 +8,7 @@ jobs:
       is_version_changed: ${{ steps.result.outputs.is_version_changed }}
     steps:
       - id: result
-        run: echo "::set-output name=is_version_changed::1"
+        run: echo "::set-output name=is_version_changed::$(sh ./.github/scripts/is-version-changed)"
   release:
     runs-on: ubuntu-18.04
     needs: build
