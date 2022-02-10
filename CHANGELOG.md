@@ -1,3 +1,28 @@
+## [1.0.13](https://github.com/nontangent/nx-ddd/compare/v1.0.12...v1.0.13) (2022-02-10)
+
+
+### Bug Fixes
+
+* ci test ([9b6dd2b](https://github.com/nontangent/nx-ddd/commit/9b6dd2bff81b3e46fddf0f45092178c6db0f301f))
+* ci test ([906f335](https://github.com/nontangent/nx-ddd/commit/906f335e51adfd0ae8eafc5ae313fa31bde05fa2))
+* test ci ([e2a6cbe](https://github.com/nontangent/nx-ddd/commit/e2a6cbe2243310db427315077d06772d54e7e4f4))
+* test ci ([67ffd65](https://github.com/nontangent/nx-ddd/commit/67ffd657eb56a94ee2077801c4c368929618b54f))
+* test ci ([62173cd](https://github.com/nontangent/nx-ddd/commit/62173cd7db21122e6689986b8b5e4ef81b1af219))
+* test ci ([25e3c8b](https://github.com/nontangent/nx-ddd/commit/25e3c8b1ef0f85c248a16a881eab494274519f47))
+* test ci ([a48b4da](https://github.com/nontangent/nx-ddd/commit/a48b4da2e3354faef54f7c69ed6468889c834651))
+* test ci ([8052b6f](https://github.com/nontangent/nx-ddd/commit/8052b6f0aeccf55220e37efb5f55cae9d5c3c72a))
+* test ci ([162c6f8](https://github.com/nontangent/nx-ddd/commit/162c6f88f8315a2cc63b6938e1b22bd754db9139))
+* test ci ([e33cbe3](https://github.com/nontangent/nx-ddd/commit/e33cbe37eb8292530328de440c34822ed962ae36))
+* test ci ([50864cf](https://github.com/nontangent/nx-ddd/commit/50864cf424e8990f24956265fb43f557f4bb1f42))
+* test ci ([62ed371](https://github.com/nontangent/nx-ddd/commit/62ed371a0a429fd6ac33ace377b10ccd31cc2f98))
+* test ci ([2d580ed](https://github.com/nontangent/nx-ddd/commit/2d580ed0ea10d18b169d04e6ff847e8e8a4f77a9))
+* test ci ([f72bbb4](https://github.com/nontangent/nx-ddd/commit/f72bbb45aa09e8e5e252746a79627990e7991786))
+* test ci ([b3d9e5c](https://github.com/nontangent/nx-ddd/commit/b3d9e5cfe83dc54183a1e248bb1644112bc05891))
+* test ci ([53fb05d](https://github.com/nontangent/nx-ddd/commit/53fb05d46655fa447063d37e6532a00b9dea19fa))
+* test ci ([796ed3c](https://github.com/nontangent/nx-ddd/commit/796ed3c1b6808438bcef5a91cd3d8ec782054dd5))
+* test ci ([75fe80a](https://github.com/nontangent/nx-ddd/commit/75fe80a4c68514aee18022f834ee9994d72752fb))
+* test ci ([f18b079](https://github.com/nontangent/nx-ddd/commit/f18b0792886cc590459ef64e26769367826399e8))
+
 ## [1.0.12](https://github.com/nontangent/nx-ddd/compare/v1.0.11...v1.0.12) (2022-02-10)
 
 
