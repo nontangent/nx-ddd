@@ -120,7 +120,7 @@
             "package-lock.json",
             "CHANGELOG.md"
           ],
-          "message": "chore(release): ${nextRelease.version}"
+          "message": "chore(release): v${nextRelease.version}"
         }
       ]
     ],
