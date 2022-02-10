@@ -5,7 +5,7 @@ jobs:
     name: Build
     runs-on: ubuntu-18.04
     outputs:
-      is_version_changed: ${{ steps.result.is_version_changed }}
+      is_version_changed: ${{ steps.result.outputs.is_version_changed }}
     steps:
       - id: result
         run: echo "::set-output is_version_changed=$(sh ./.github/scripts/is-version-changed)"
