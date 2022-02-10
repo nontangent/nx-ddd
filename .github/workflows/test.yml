@@ -7,6 +7,7 @@ jobs:
       is_released: ${{ steps.result.outputs.is_released }}
     steps:
       - uses: actions/checkout@v2
+      - run: echo "is_released $(sh ./.github/scripts/is-released)"
       - id: result
         run: echo "::set-output name=is_released::$(sh ./.github/scripts/is-released)"
   publish:
