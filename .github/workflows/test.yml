@@ -13,6 +13,6 @@ jobs:
   publish:
     runs-on: ubuntu-18.04
     needs: release
-    if: ${{needs.build.outputs.is_released == 1}}
+    if: ${{needs.release.outputs.is_released == 1}}
     steps:
-      - run: echo "is_released ${{needs.build.outputs.is_released}}"
+      - run: echo "is_released ${{needs.release.outputs.is_released}}"
