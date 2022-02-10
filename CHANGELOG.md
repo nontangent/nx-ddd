@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/nontangent/nx-ddd/compare/v1.0.6...v1.0.7) (2022-02-10)
+
+
+### Bug Fixes
+
+* dummy commit ([e738eea](https://github.com/nontangent/nx-ddd/commit/e738eea47e7d6c823a99f0144495644d220ab7a6))
+
 ## [1.0.6](https://github.com/nontangent/nx-ddd/compare/v1.0.5...v1.0.6) (2022-02-09)
 
 
