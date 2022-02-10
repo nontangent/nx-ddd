@@ -24,6 +24,8 @@ jobs:
     name: Release
     runs-on: ubuntu-18.04
     needs: build
+    outputs:
+      is_released: ${{ steps.result.outputs.is_released }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -37,12 +39,13 @@ jobs:
       - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
-      - name: is version updated
-        run: 'test "$(git show -s --format=%s)" = "chore(release): $(git describe --tags --abbrev=0)"; echo $?'
+      - id: result
+        run: echo "::set-output name=is_released::$(sh ./.github/scripts/is-released)"
   publish:
     name: Publish
     runs-on: ubuntu-18.04
     needs: release
+    if: needs.release.outputs.is_released == 'true'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2

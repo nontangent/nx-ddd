@@ -1,2 +1,0 @@
-#! /bin/sh
-test "$(git show -s --format=%s)" = "chore(release): $(git describe --tags --abbrev=0)"; echo $?
