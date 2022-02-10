@@ -7,6 +7,7 @@ jobs:
     outputs:
       is_version_changed: ${{ steps.result.outputs.is_version_changed }}
     steps:
+      - uses: actions/checkout@v2
       - id: result
         run: echo "::set-output name=is_version_changed::$(sh ./.github/scripts/is-version-changed)"
   release:
