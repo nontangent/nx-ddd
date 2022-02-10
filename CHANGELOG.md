@@ -1,3 +1,10 @@
+## [1.0.11](https://github.com/nontangent/nx-ddd/compare/v1.0.10...v1.0.11) (2022-02-10)
+
+
+### Bug Fixes
+
+* ci test ([360b1c3](https://github.com/nontangent/nx-ddd/commit/360b1c3814a5965da545321a8953bae89653e1f0))
+
 ## [1.0.10](https://github.com/nontangent/nx-ddd/compare/v1.0.9...v1.0.10) (2022-02-10)
 
 
