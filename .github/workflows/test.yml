@@ -15,6 +15,8 @@ jobs:
         with:
           node-version: 16.x
           cache: npm
+      - run: git show -s --format=%s
+      - run: git describe --tags --abbrev=0
       # - name: Install node packages
       #   run: npm i
       # - name: Download production artifacts
@@ -23,7 +25,7 @@ jobs:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         # run: npx semantic-release
       - id: result
-        run: echo "::set-output name=is_released::$(node .github/scripts/is-released.js)"
+        run: echo "::set-output name=is_released::$(sh .github/scripts/is-released)"
   publish:
     name: Publish
     runs-on: ubuntu-18.04
