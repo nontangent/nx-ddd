@@ -24,7 +24,9 @@ jobs:
       #   run: npx semantic-release
       # - run: git show -s --format=%s
       # - run: git describe --tags --abbrev=0  --always
-      - run: echo "$(sh .github/scripts/is-released)";
+      - run: sh --version
+      - run: bash --version
+      - run: echo "$(bash .github/scripts/is-released)";
       - id: result
         run: echo "::set-output name=is_released::$(sh .github/scripts/is-released)"
   publish:
