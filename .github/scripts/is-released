@@ -1,11 +1,8 @@
 #! /bin/sh
-# LAST_COMMIT_MESSAGE="$(git show -s --format=%s)";
-# LAST_TAG="chore(release): $(git describe --tags --abbrev=0)";
+LAST_COMMIT_MESSAGE="$(git show -s --format=%s)";
+LAST_TAG="$(git describe --tags --abbrev=0 --always)";
 
-LAST_COMMIT_MESSAGE="chore(release): v1.0.0"
-LAST_TAG="chore(release): v1.0.0"
-
-if [ "$LAST_COMMIT_MESSAGE" == "$LAST_TAG" ]; then
+if [ "$LAST_COMMIT_MESSAGE" == "chore(release): $LAST_TAG" ]; then
   echo true
 else
   echo false
