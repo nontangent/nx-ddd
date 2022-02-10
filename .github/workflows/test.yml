@@ -17,7 +17,7 @@ jobs:
   release:
     runs-on: ubuntu-18.04
     needs: build
-    if: ${{ needs.build.outputs.is_version_changed == 1 }}
+    if: ${{ needs.build.outputs.is_version_changed != 1 }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
