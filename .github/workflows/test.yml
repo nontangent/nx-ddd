@@ -10,4 +10,13 @@ jobs:
         with:
           node-version: 16.x
           cache: npm
+      - run: echo "::set-output is_version_changed=$(sh ./.github/scripts/is-version-changed)"
+  release:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: npm
       - run: sh ./.github/scripts/is-version-changed
