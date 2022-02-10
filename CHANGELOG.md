@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/nontangent/nx-ddd/compare/v1.0.7...v1.0.8) (2022-02-10)
+
+
+### Bug Fixes
+
+* version message ([3cfa60d](https://github.com/nontangent/nx-ddd/commit/3cfa60d59b6414ea1904a69a91cf4d851c8c0f1e))
+
 ## [1.0.7](https://github.com/nontangent/nx-ddd/compare/v1.0.6...v1.0.7) (2022-02-10)
 
 
