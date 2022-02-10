@@ -24,4 +24,4 @@ jobs:
         with:
           node-version: 16.x
           cache: npm
-      - run: echo "is_version_changed ${{jobs.build.outputs.is_version_changed}}"
+      - run: echo "is_version_changed ${{needs.build.outputs.is_version_changed}}"
