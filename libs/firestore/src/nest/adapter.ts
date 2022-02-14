@@ -43,7 +43,7 @@ export const convertCollectionGroupRef = <Data>(
   }
 }
 
-export class FirestoreAdapter<Data> extends _FirestoreAdapter<dayjs.Dayjs> {
+export class FirestoreAdapter extends _FirestoreAdapter<dayjs.Dayjs> {
 
   constructor(
     public nestFire: FirebaseFirestoreService,
@@ -76,7 +76,7 @@ export class FirestoreAdapter<Data> extends _FirestoreAdapter<dayjs.Dayjs> {
     return convertCollectionGroupRef<Data>(this.nestFire.collectionGroup(path) as any);
   }
 
-  bulkWriter = () => ({
+  bulkWriter = <Data>() => ({
     update: (doc: CommonFirestoreDocument<Data>, data : Data) => {
       this.nestFire.bulkWriter().update(doc.__ref, data)
     },
