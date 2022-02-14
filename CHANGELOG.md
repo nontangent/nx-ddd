@@ -1,3 +1,12 @@
+## [1.0.1](https://github.com/nontangent/nx-ddd/compare/v1.0.0...v1.0.1) (2022-02-14)
+
+
+### Bug Fixes
+
+* **common:** remove dead code ([6d01da9](https://github.com/nontangent/nx-ddd/commit/6d01da98b5140882a3d07672007dada2552e6821))
+* **firestore:** remove data type generics ([54363cd](https://github.com/nontangent/nx-ddd/commit/54363cd4ad5d1d1cc7c9fa1a3e3daf8c8a75b172))
+* **firestore:** remove type generics ([97473a6](https://github.com/nontangent/nx-ddd/commit/97473a6e4d3432afc200acfcf16fd7a989d68510))
+
 # 1.0.0 (2022-02-10)
 
 
