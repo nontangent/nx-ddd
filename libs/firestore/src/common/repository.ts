@@ -1,7 +1,6 @@
 import { generateId } from '@nx-ddd/firestore/common/utilities/generate-id';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, map, scan, shareReplay, take } from 'rxjs/operators';
-import { pick } from 'lodash';
 import { FirestoreEntityConstructor } from './entity';
 import {
   CommonFirestoreCollection, 
@@ -47,8 +46,8 @@ export abstract class FirestoreRepository<Entity extends {id: string}, Data exte
     return this.list$.pipe(take(1)); 
   }
 
-  listChanges(): Observable<Entity[]> {
-    return this._listChanges(this.collection());
+  listChanges(paramMap?: Partial<Entity>): Observable<Entity[]> {
+    return this._listChanges(this.collection(paramMap));
   }
 
   changes({id}: Partial<Entity>) {
@@ -147,7 +146,9 @@ export abstract class FirestoreRepository<Entity extends {id: string}, Data exte
         id: doc.id, ref: { path: doc.ref.path }, 
         data: () => this.adapter.fromFirestore<Data>(doc.data() as FirestoreData<Data, Date>),
       })),
-      toFirestore: (entity: Entity) => pick(this.adapter.toFirestore(entity), this.Entity.FIELDS) as Data,
+      toFirestore: (entity: Entity) => this.Entity.toFirestoreDoc({
+        ...this.adapter.toFirestore(entity),
+      }) as Data,
     }
   }
 

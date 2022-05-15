@@ -12,8 +12,9 @@ export interface FirestoreEntityConstructor<Entity, FirestoreData> {
   new (): Entity;
   FIELDS: any;
 
-  fromFirestoreDoc: (doc: DocumentSnapshot<any>) => Entity,
-  fromFirestoreDocs: (docs: DocumentSnapshot<any>[]) => Entity[],
+  fromFirestoreDoc: (doc: DocumentSnapshot<any>) => Entity;
+  fromFirestoreDocs: (docs: DocumentSnapshot<any>[]) => Entity[];
+  toFirestoreDoc: (entity: Entity) => FirestoreData;
 }
 
 
@@ -37,6 +38,10 @@ export class FirestoreEntity {
 
   static fromFirestoreDocs<T>(docs: DocumentSnapshot<any>[]): T[] {
     return docs.map(doc => this.fromFirestoreDoc(doc)) as T[];
+  }
+
+  static toFirestoreDoc<T>(data: T): any {
+    return pick(data, this.FIELDS);
   }
 
   static toObject<T extends object, D>(entity: T): D {

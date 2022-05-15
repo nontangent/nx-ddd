@@ -15,9 +15,6 @@ export abstract class AdminFirestoreRepository<
       const path = this.buildDocPath(entity);
       const doc = this.adapter.doc<Data>(path);
 
-      // TODO(nontangent): you should fix type
-      (this.adapter as FirestoreAdapter).bulkWriter();
-
       bulkWriter.update(doc, {
         // TODO(nontangent): you should fix type
         ...this.converter.toFirestore(entity as Entity),

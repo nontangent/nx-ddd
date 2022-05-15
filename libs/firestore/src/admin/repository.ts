@@ -16,9 +16,6 @@ export abstract class AdminFirestoreRepository<
     return entities.reduce((bulkWriter, entity) => {
       const path = this.buildDocPath(entity);
       const doc = this.adapter.doc<Data>(path);
-      
-      (this.adapter as FirestoreAdapter).bulkWriter();
-
       bulkWriter.update(doc, {
         // TODO: 型
         ...this.converter.toFirestore(entity as Entity),
