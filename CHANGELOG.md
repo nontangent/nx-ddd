@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/nontangent/nx-ddd/compare/v1.0.1...v1.1.0) (2022-05-15)
+
+
+### Features
+
+* **firestore:** update ([66d4cef](https://github.com/nontangent/nx-ddd/commit/66d4cefaf83c68f75bc7f69e4129bdbcc6e5b281))
+
 ## [1.0.1](https://github.com/nontangent/nx-ddd/compare/v1.0.0...v1.0.1) (2022-02-14)
 
 
