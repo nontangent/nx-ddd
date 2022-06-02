@@ -1,6 +1,6 @@
 import { FirestoreAdapter as _FirestoreAdapter, Timestamp } from '@nx-ddd/firestore/common';
 import * as dayjs from 'dayjs';
-import firebase from 'firebase';
+import firebase from 'firebase/compat';
 
 
 export class FirestoreAdapter extends _FirestoreAdapter<dayjs.Dayjs> {

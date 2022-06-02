@@ -10,7 +10,7 @@ import {
 } from '@nx-ddd/firestore/common';
 import * as dayjs from 'dayjs';
 import { from, Observable, of } from 'rxjs';
-import { firestore } from 'firebase-admin';
+import { firestore } from 'firebase/compat-admin';
 
 
 export const convertDocRef = <Data>(

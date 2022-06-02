@@ -1,5 +1,5 @@
 import * as dayjs from 'dayjs';
-import firebase from 'firebase';
+import firebase from 'firebase/compat';
 import Timestamp = firebase.firestore.Timestamp;
 import FieldValue = firebase.firestore.FieldValue;
 
