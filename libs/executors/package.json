@@ -1,0 +1,6 @@
+{
+  "name": "@nx-ddd/executors",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "builders": "./executors.json"
+}

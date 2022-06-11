@@ -20,6 +20,8 @@
       "@nx-ddd/common/*": ["libs/common/src/*"],
       "@nx-ddd/domain": ["libs/domain/src/index.ts"],
       "@nx-ddd/domain/*": ["libs/domain/src/*"],
+      "@nx-ddd/executors": ["libs/executors/src/index.ts"],
+      "@nx-ddd/executors/*": ["libs/executors/src/*"],
       "@nx-ddd/infrastructure": ["libs/infrastructure/src/index.ts"],
       "@nx-ddd/infrastructure/*": ["libs/infrastructure/src/*"],
       "@platform/api-interfaces": ["libs/api-interfaces/src/index.ts"]
