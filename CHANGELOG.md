@@ -1,3 +1,20 @@
+# [3.0.0](https://github.com/nontangent/nx-ddd/compare/v2.0.0...v3.0.0) (2022-06-11)
+
+
+### Build System
+
+* **deps:** add support for nx 13 ([d51eeb0](https://github.com/nontangent/nx-ddd/commit/d51eeb0581a6301a947be2770b6a67f86db396e8))
+
+
+### Features
+
+* **executors:** add tsc executor with srcRootForCompilationRoot option ([9738ab1](https://github.com/nontangent/nx-ddd/commit/9738ab198ba5a6e19dc937ebd169bfb6a246b32e))
+
+
+### BREAKING CHANGES
+
+* **deps:** add support for nx 13
+
 # [2.0.0](https://github.com/nontangent/nx-ddd/compare/v1.1.0...v2.0.0) (2022-06-11)
 
 
