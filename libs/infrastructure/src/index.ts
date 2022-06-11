@@ -1,1 +1,1 @@
-export * from './lib/infrastructure';
+export * from './repositories';
