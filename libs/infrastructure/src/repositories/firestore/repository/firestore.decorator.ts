@@ -1,9 +1,11 @@
+import { Entity } from '@nx-ddd/domain';
 import camelCase from 'lodash.camelcase';
-import { Entity } from '@nx-ddd/domain/models/entity';
 import { Converter as BaseConverter } from '../converter';
 import { pathBuilderFactory } from '../path-builder';
 import { FirestoreQuery } from '../query';
 import { FirestoreRepository } from '../repository';
+
+// class Entity {}
 
 
 export interface FirestoreOptions<E extends Entity = any, EntityClass extends typeof Entity = any> {

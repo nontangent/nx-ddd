@@ -13,7 +13,7 @@
   "affected": {
     "defaultBase": "master"
   },
-  "npmScope": "platform",
+  "npmScope": "@nx-ddd",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
@@ -23,7 +23,6 @@
       }
     }
   },
-  "projects": {},
   "targetDependencies": {
     "build": [
       {

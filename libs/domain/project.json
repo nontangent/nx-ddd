@@ -26,7 +26,9 @@
         "tsConfig": "libs/domain/tsconfig.lib.json",
         "packageJson": "libs/domain/package.json",
         "main": "libs/domain/src/index.ts",
-        "assets": ["libs/domain/*.md"]
+        "assets": ["libs/domain/*.md"],
+        "srcRootForCompilationRoot": "libs/domain/src",
+        "buildableProjectDepsInPackageJsonType": "peerDependencies"
       }
     }
   },
