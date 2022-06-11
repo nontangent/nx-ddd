@@ -10,4 +10,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/libs/infrastructure',
   testEnvironment: 'node',
+  moduleNameMapper: {
+    "lodash-es": "lodash"
+  }
 };

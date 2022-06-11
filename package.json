@@ -49,12 +49,15 @@
     "@nestjs/platform-express": "^7.0.0",
     "@nrwl/angular": "12.10.0",
     "firebase": "^9.0.0",
-    "firebase-admin": "^8.10.0",
+    "firebase-admin": "^9.7.0",
+    "lodash-es": "^4.17.15",
+    "lodash.camelcase": "^4.3.0",
+    "lodash.pick": "^4.4.0",
     "reflect-metadata": "^0.1.13",
+    "rxfire": "^6.0.0",
     "rxjs": "^6.0.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.11.4",
-    "rxfire": "^6.0.0"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "12.2.17",
