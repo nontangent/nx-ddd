@@ -19,7 +19,7 @@
       }
     },
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "../../../../dist/libs/executors:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/domain",
@@ -32,5 +32,6 @@
       }
     }
   },
+  "implicitDependencies": ["executors", "common"],
   "tags": []
 }

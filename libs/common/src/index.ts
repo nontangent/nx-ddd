@@ -1,1 +1,1 @@
-export * from './utilities/to-object';
+export * from './utilities';

@@ -19,7 +19,7 @@
       }
     },
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "../../../../dist/libs/executors:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/common",
@@ -27,9 +27,11 @@
         "packageJson": "libs/common/package.json",
         "main": "libs/common/src/index.ts",
         "assets": ["libs/common/*.md"],
-        "srcRootForCompilationRoot": "libs/common/src"
+        "srcRootForCompilationRoot": "libs/common/src",
+        "buildableProjectDepsInPackageJsonType": "peerDependencies"
       }
     }
   },
+  "implicitDependencies": ["executors"],
   "tags": []
 }
