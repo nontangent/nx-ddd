@@ -1,4 +1,4 @@
-name: Production
+name: On Push Main Workflow
 on:
   push:
     branches:
@@ -14,7 +14,7 @@ jobs:
           node-version: 16.x
           cache: npm
       - run: npm i
-      - run: npx nx build firestore --with-deps
+      - run: npx nx run-many --target=build --projects=common,domain,infrastructure --parallel=2
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -64,8 +64,12 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm run publish:common
-      - name: Publish @nx-ddd/firestore
+      - name: Publish @nx-ddd/domain
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm run publish:firestore
+        run: npm run publish:domain
+      - name: Publish @nx-ddd/infrastructure
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run publish:infrastructure
         

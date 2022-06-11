@@ -28,10 +28,12 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "publish:common": "cd dist/libs/common && npm version $PACKAGE_VERSION && npm publish --access=public",
-    "publish:firestore": "cd dist/libs/firestore && npm version $PACKAGE_VERSION && npm publish --access public",
+    "publish:domain": "cd dist/libs/domain && npm version $PACKAGE_VERSION && npm publish --access public",
+    "publish:infrastructure": "cd dist/libs/infrastructure && npm version $PACKAGE_VERSION && npm publish --access public",
     "prepare": "npx simple-git-hooks",
     "link:common": "cd dist/libs/common && npm link",
-    "link:firestore": "cd dist/libs/firestore && npm link"
+    "link:domain": "cd dist/libs/domain && npm link",
+    "link:infrastructure": "cd dist/libs/infrastructure && npm link"
   },
   "dependencies": {
     "@aginix/nestjs-firebase-admin": "^2.0.0",
