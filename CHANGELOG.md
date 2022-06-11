@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/nontangent/nx-ddd/compare/v1.1.0...v2.0.0) (2022-06-11)
+
+
+### Build System
+
+* **deps:** add support for nx 12 ([f3148a9](https://github.com/nontangent/nx-ddd/commit/f3148a9840458fe187defac9c52a7f14d0385012))
+
+
+### BREAKING CHANGES
+
+* **deps:** add support for nx 12
+
 # [1.1.0](https://github.com/nontangent/nx-ddd/compare/v1.0.1...v1.1.0) (2022-05-15)
 
 
