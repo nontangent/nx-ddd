@@ -81,7 +81,6 @@
     "@nrwl/nest": "13.10.0",
     "@nrwl/node": "13.10.0",
     "@nrwl/nx-cloud": "14.0.8",
-    "@nrwl/tao": "12.10.0",
     "@nrwl/workspace": "13.10.0",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
@@ -108,7 +107,8 @@
     "inquirer": "^6.2.2",
     "inquirer-autocomplete-prompt": "^1.0.1",
     "open": "^7.0.3",
-    "jsonc-parser": "^3.0.0"
+    "jsonc-parser": "^3.0.0",
+    "nx": "13.10.0"
   },
   "commitlint": {
     "extends": [
