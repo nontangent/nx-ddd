@@ -27,6 +27,7 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
+    "publish:executors": "cd dist/libs/executors && npm version $PACKAGE_VERSION && npm publish --access=public",
     "publish:common": "cd dist/libs/common && npm version $PACKAGE_VERSION && npm publish --access=public",
     "publish:domain": "cd dist/libs/domain && npm version $PACKAGE_VERSION && npm publish --access public",
     "publish:infrastructure": "cd dist/libs/infrastructure && npm version $PACKAGE_VERSION && npm publish --access public",
