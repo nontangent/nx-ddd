@@ -49,10 +49,7 @@ export class AdminFirestoreAdapter extends FirestoreAdapter<dayjs.Dayjs> {
     return this.firestore.runTransaction(fn);
   }
 
-  query<Data>(
-    collection: FirestoreCollection<Data, firestore.CollectionReference>,
-    ...queryFnArray: QueryFn<Data>[]
-  ) {
+  query<Data>(collection: FirestoreCollection<Data>, ...queryFnArray: QueryFn<Data>[]): any {
     return queryFnArray.reduce((collectionOrQuery, queryFn) => queryFn(collectionOrQuery), collection);
   }
 

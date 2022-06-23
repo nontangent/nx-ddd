@@ -6,7 +6,7 @@ import { DocumentSnapshot, ToFirestoreData } from '../interfaces';
 export class Converter<Entity = any, Data = ToFirestoreData<Entity, Dayjs>> {
   constructor (
     protected Entity: any,
-    private adapter: FirestoreAdapter<any>,
+    protected adapter: FirestoreAdapter<any>,
   ) { }
 
   private get fields(): string[] {

@@ -2,12 +2,13 @@ import { Injectable, NgModule } from '@angular/core';
 import { 
   doc, collection, collectionGroup, serverTimestamp, 
   Timestamp, setDoc, getDoc, deleteDoc, getDocs, 
-  onSnapshot, updateDoc, Firestore, runTransaction, writeBatch
+  onSnapshot, updateDoc, Firestore, runTransaction, writeBatch,
+  limit, orderBy, query
 } from '@angular/fire/firestore';
 import dayjs from 'dayjs';
 import { Subject } from 'rxjs';
-import { FirestoreAdapter } from '../base';
-import { DocumentChangeAction, FirestoreCollection, FirestoreCollectionGroup, FirestoreDocument } from '../../interfaces';
+import { FirestoreAdapter, QueryFn } from '../base';
+import { DocumentChangeAction, DocumentSnapshot, FirestoreCollection, FirestoreCollectionGroup, FirestoreDocument } from '../../interfaces';
 
 
 @Injectable()
@@ -42,6 +43,11 @@ export class AngularFireFirestoreAdapter extends FirestoreAdapter<dayjs.Dayjs> {
       get: () => getDoc(docRef),
       update: (data) => updateDoc(docRef, data),
       delete: () => deleteDoc(docRef),
+      stateChanges: () => {
+        const subject = new Subject<DocumentSnapshot<any>>();
+        onSnapshot(docRef, (doc) => subject.next({id: doc.id, ref: doc.ref, data: () => doc.data()}));
+        return subject.asObservable();
+      },
     }
   }
 
@@ -77,6 +83,18 @@ export class AngularFireFirestoreAdapter extends FirestoreAdapter<dayjs.Dayjs> {
 
   runTransaction(fn: Parameters<typeof runTransaction>[1]) {
     return runTransaction(this.firestore, fn);
+  }
+
+  query<Data>(collection: FirestoreCollection<Data>, ...queryFnArray: QueryFn<Data>[]): any {
+    return query(collection.__ref, ...queryFnArray.map(queryFn => queryFn()));
+  }
+
+  orderBy<Data>(key: string, order: 'asc' | 'desc' = 'asc'): QueryFn<Data> {
+    return () => orderBy(key, order);
+  }
+
+  limit<Data>(n: number): QueryFn<Data> {
+    return () => limit(n);
   }
   
   batch() {

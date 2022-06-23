@@ -3,7 +3,7 @@ import {
   ToFirestoreData, Timestamp
 } from '../../interfaces';
 
-export type QueryFn<Data> = (collection: any) => any;
+export type QueryFn<Data> = (collection?: any) => any;
 
 export abstract class FirestoreAdapter<Date = any> {
   protected abstract isTimestamp: (v: any) => v is Timestamp;
@@ -20,6 +20,10 @@ export abstract class FirestoreAdapter<Date = any> {
   abstract runTransaction(fn: any): any;
   abstract batch(): any;
 
+  abstract query<Data>(collection: FirestoreCollection<Data>, ...queryFnArray: QueryFn<Data>[]): any;
+  abstract orderBy<Data>(key: string, order: 'asc' | 'desc'): QueryFn<Data>;
+  abstract limit<Data>(n: number): QueryFn<Data>;
+
   toFirestoreData<Entity>(entity: Entity): ToFirestoreData<Entity, Date> {
     return Object.entries(entity).reduce((pre, [k, v]) => ({
       ...pre, [k]: this.isDate(v) ?  this.convertDateToTimestamp(v) : v,
@@ -30,13 +34,6 @@ export abstract class FirestoreAdapter<Date = any> {
     return Object.entries(data).reduce((pre, [k, v]) => ({
       ...pre, [k]: this.isTimestamp(v) ? this.convertTimestampToDate(v) : v,
     }), {} as Entity);
-  }
-
-  query<Data>(
-    collection: FirestoreCollection<Data>,
-    queryFn: QueryFn<Data>,
-  ) {
-   return  
   }
 
 }

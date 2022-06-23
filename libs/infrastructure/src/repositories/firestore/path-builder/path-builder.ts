@@ -27,6 +27,6 @@ export const resolvePaths = (obj: object, paths: string[]): string => {
 }
 
 const resolvePath = (obj: object, key: string) => {
-  if (!obj?.[key]) throw new Error(`Invalid key is detected in resolving paths, :${key}`);
+  if (!obj?.[key]) throw new Error(`Invalid key is detected in resolving paths, key: ${key}, obj: ${obj}`);
   return obj?.[key];
 }

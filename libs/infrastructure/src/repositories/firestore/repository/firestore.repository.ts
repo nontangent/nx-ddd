@@ -58,6 +58,17 @@ export class FirestoreRepository<
     }, this.adapter.batch()).commit();
   }
 
+  bulkCreate(entities: Entity[]): Promise<void> {
+    // TODO(nontangent): add maximum 500 record validation
+    return entities.reduce((batch, entity) => {
+      const doc = this.doc(entity).__ref;
+      return batch.create(doc, {
+        ...this.converter.toFirestore(entity),
+        ...this.buildServerTimestampObject(['createdAt', 'updatedAt']),
+      });
+    }, this.adapter.batch()).commit();
+  }
+
   bulkUpdate(entities: (Partial<Entity> & HasId)[]): Promise<void> {
     // TODO(nontangent): add maximum 500 record validation
     return entities.reduce((batch, entity) => {

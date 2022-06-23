@@ -49,6 +49,7 @@ export interface DocumentReference<DocumentData, OriginalReference = any> {
   get(): Promise<DocumentSnapshot<DocumentData>>;
   update(data: DocumentData): Promise<void | any>;
   delete(): Promise<void | any>;
+  stateChanges?: () => Observable<DocumentSnapshot<DocumentData>>;
 }
 
 export type FirestoreDocument<DocumentData> = DocumentReference<DocumentData>;

@@ -6,9 +6,13 @@ import { FirestoreQuery } from '../query';
 import { FirestoreRepository } from '../repository';
 
 
-export interface FirestoreOptions<E extends Entity = any, EntityClass extends typeof Entity = any> {
+export interface FirestoreOptions<
+  E extends Entity = any, 
+  EntityClass extends typeof Entity = any,
+  ConverterClass extends typeof BaseConverter = any,
+> {
   Entity: EntityClass;
-  Converter?: typeof BaseConverter;
+  Converter?: ConverterClass;
   Query?: typeof FirestoreQuery;
   path: string;
 }

@@ -2,7 +2,7 @@ import { doc, collection, collectionGroup, FieldValue, Timestamp, setDoc, getDoc
 import dayjs from 'dayjs';
 import { Subject } from 'rxjs';
 import { FirestoreAdapter } from '../base';
-import { DocumentChangeAction, FirestoreCollection, FirestoreCollectionGroup, FirestoreDocument } from '../../interfaces';
+import { DocumentChangeAction, DocumentSnapshot, FirestoreCollection, FirestoreCollectionGroup, FirestoreDocument } from '../../interfaces';
 import { updateDoc } from '@angular/fire/firestore';
 
 export class FirebaseFirestoreAdapter extends FirestoreAdapter<dayjs.Dayjs> {
@@ -36,6 +36,11 @@ export class FirebaseFirestoreAdapter extends FirestoreAdapter<dayjs.Dayjs> {
       get: () => getDoc(docRef),
       update: (data) => updateDoc(docRef, data),
       delete: () => deleteDoc(docRef),
+      stateChanges: () => {
+        const subject = new Subject<DocumentSnapshot<any>>();
+        onSnapshot(docRef, (doc) => subject.next({id: doc.id, ref: doc.ref, data: () => doc.data()}));
+        return subject.asObservable();
+      },
     }
   }
 
