@@ -25,7 +25,8 @@ export class FirestoreRepository<
   }
 
   list(paramMap?: Partial<Entity>, query: any = q => q) {
-    return this._list(query(this.collection(paramMap)));
+    const collection = paramMap ? this.collection(paramMap) : this.collectionGroup();
+    return this._list(query(collection));
   }
 
   get(paramMap: Partial<Entity> & HasId) {
