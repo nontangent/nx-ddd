@@ -35,7 +35,7 @@ export class FirestoreRepository<
 
   save(entity: Entity): Promise<[Entity, boolean]> {
     // TODO(nontangent): なんでここの型定義でasがいるのか考える。
-    return this._save(this.doc({id: entity || this.genId()} as any), entity);
+    return this._save(this.doc({id: entity?.id || this.genId()} as any), entity);
   }
 
   create(entity: Partial<Entity> & HasId): Promise<Entity> {
