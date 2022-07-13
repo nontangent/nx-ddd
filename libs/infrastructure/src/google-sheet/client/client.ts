@@ -1,14 +1,14 @@
-import { InjectionToken, Injector } from '@nx-ddd/common/injector';
+import { Injectable, Inject, InjectionToken } from '@nx-ddd/core';
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 
-export const SERVICE_ACCOUNT = new InjectionToken('[@nx-ddd/infrastructure] Service Account');
+export const SERVICE_ACCOUNT = new InjectionToken('[@nx-ddd/infrastructure/google-sheet/client] Service Account');
 
+@Injectable()
 export class GoogleSheetClient {
 
   constructor(
-    protected injector: Injector,
-    private serviceAccount: any = injector.get(SERVICE_ACCOUNT),
-  ) {}
+    @Inject(SERVICE_ACCOUNT) private serviceAccount: any,
+  ) { }
 
   private async getDoc(id: string) {
     const doc = new GoogleSpreadsheet(id);
