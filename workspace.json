@@ -4,6 +4,7 @@
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
     "common": "libs/common",
+    "core": "libs/core",
     "demo": "apps/demo",
     "demo-e2e": "apps/demo-e2e",
     "domain": "libs/domain",

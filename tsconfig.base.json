@@ -18,6 +18,8 @@
     "paths": {
       "@nx-ddd/common": ["libs/common/src/index.ts"],
       "@nx-ddd/common/*": ["libs/common/src/*"],
+      "@nx-ddd/core": ["libs/core/src/index.ts"],
+      "@nx-ddd/core/*": ["libs/core/src/*"],
       "@nx-ddd/domain": ["libs/domain/src/index.ts"],
       "@nx-ddd/domain/*": ["libs/domain/src/*"],
       "@nx-ddd/executors": ["libs/executors/src/index.ts"],
