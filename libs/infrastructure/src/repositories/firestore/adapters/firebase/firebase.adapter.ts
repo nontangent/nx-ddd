@@ -1,7 +1,7 @@
-import { doc, collection, collectionGroup, FieldValue, Timestamp, setDoc, getDoc, getDocs, getFirestore, onSnapshot, deleteDoc, writeBatch } from 'firebase/firestore';
+import { doc, collection, collectionGroup, FieldValue, Timestamp, setDoc, getDoc, getDocs, getFirestore, onSnapshot, deleteDoc, writeBatch, query, orderBy, limit } from 'firebase/firestore';
 import dayjs from 'dayjs';
 import { Subject } from 'rxjs';
-import { FirestoreAdapter } from '../base';
+import { FirestoreAdapter, QueryFn } from '../base';
 import { DocumentChangeAction, DocumentSnapshot, FirestoreCollection, FirestoreCollectionGroup, FirestoreDocument } from '../../interfaces';
 import { updateDoc } from '@angular/fire/firestore';
 
@@ -76,6 +76,18 @@ export class FirebaseFirestoreAdapter extends FirestoreAdapter<dayjs.Dayjs> {
 
   runTransaction() {
     return 
+  }
+
+  query<Data>(collection: FirestoreCollection<Data>, ...queryFnArray: QueryFn<Data>[]): any {
+    return query(collection.__ref, ...queryFnArray.map(queryFn => queryFn()));
+  }
+
+  orderBy<Data>(key: string, order: 'asc' | 'desc' = 'asc'): QueryFn<Data> {
+    return () => orderBy(key, order);
+  }
+
+  limit<Data>(n: number): QueryFn<Data> {
+    return () => limit(n);
   }
 
   batch() {

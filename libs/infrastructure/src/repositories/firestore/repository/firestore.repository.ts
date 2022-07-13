@@ -1,4 +1,5 @@
-import { toObject, generateId } from '@nx-ddd/common/utilities';
+import { toObject } from '@nx-ddd/common/utilities/to-object';
+import { generateId } from '@nx-ddd/common/utilities/generate-id';
 import dayjs from 'dayjs';
 import { FirestoreAdapter } from '../adapters';
 import { Converter } from '../converter';
@@ -20,7 +21,10 @@ export class FirestoreRepository<
 
   protected pathBuilder: FirestorePathBuilder<Entity>;
 
-  constructor(adapter: FirestoreAdapter, converter?: Converter<Entity>) {
+  constructor(
+    adapter: FirestoreAdapter, 
+    converter?: Converter<Entity>
+  ) {
     super(adapter, converter);
   }
 
@@ -52,10 +56,13 @@ export class FirestoreRepository<
     return this.doc(paramMap as any).delete();
   }
 
-  bulkWrite(entities: Entity[]): Promise<void> {
+  bulkWrite(entities: Entity[], timestamps: string[] = []): Promise<void> {
     return entities.reduce((batch, entity) => {
       const doc = this.doc(entity).__ref;
-      return batch.set(doc, this.converter.toFirestore(entity));
+      return batch.set(doc, {
+        ...this.converter.toFirestore(entity),
+        ...this.buildServerTimestampObject(timestamps),
+      });
     }, this.adapter.batch()).commit();
   }
 

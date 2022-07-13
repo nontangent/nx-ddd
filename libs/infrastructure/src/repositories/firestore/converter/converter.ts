@@ -1,11 +1,16 @@
 import { Dayjs } from 'dayjs';
+import { Optional, Injectable, Inject, InjectionToken } from '@nx-ddd/core';
 import pick from 'lodash.pick';
 import { FirestoreAdapter } from '../adapters';
 import { DocumentSnapshot, ToFirestoreData } from '../interfaces';
 
-export class Converter<Entity = any, Data = ToFirestoreData<Entity, Dayjs>> {
+export const ENTITY = new InjectionToken('[@nx-ddd/infrastructure] ENTITY');
+
+@Injectable()
+export class FirestoreConverter<Entity = any, Data = ToFirestoreData<Entity, Dayjs>> {
+
   constructor (
-    protected Entity: any,
+    @Optional() @Inject(ENTITY) protected Entity: any,
     protected adapter: FirestoreAdapter<any>,
   ) { }
 
@@ -26,3 +31,10 @@ export class Converter<Entity = any, Data = ToFirestoreData<Entity, Dayjs>> {
     return pick(data, this.fields) as Data;
   }
 }
+
+// DEPRECATED(nontangent): use FirestoreConverter
+@Injectable()
+export class Converter<
+  Entity = any,
+  Data = ToFirestoreData<Entity, Dayjs>
+> extends FirestoreConverter<Entity, Data> { }

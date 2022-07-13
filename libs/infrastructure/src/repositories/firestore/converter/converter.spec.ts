@@ -1,18 +1,18 @@
 import dayjs from 'dayjs';
 import admin from 'firebase-admin';
-import { Converter } from './converter';
+import { FirestoreConverter } from './converter';
 import { AdminFirestoreAdapter } from '../adapters/admin';
 import { DocumentSnapshot } from '../interfaces';
 import { Transaction, testTransaction, timestampFactory, initializeTest } from '../testing';
 
 initializeTest();
 
-describe('Converter', () => {
-  let converter: Converter;
+describe('FirestoreConverter', () => {
+  let converter: FirestoreConverter;
   const adapter = new AdminFirestoreAdapter(admin.firestore());
 
   beforeEach(() => {
-    converter = new Converter(Transaction, adapter);
+    converter = new FirestoreConverter(Transaction, adapter);
   })
 
   describe('fromFirestore', () => {
@@ -33,7 +33,8 @@ describe('Converter', () => {
 
   describe('toFirestore', () => {
     it('should be succeeded', () => {
-      expect(converter.toFirestore(testTransaction)).toEqual({
+      const data = converter.toFirestore(testTransaction);
+      expect(data).toEqual({
         dealAt: timestampFactory(dayjs('2018-02-01')),
         createdAt: timestampFactory(dayjs('2022-01-01')),
         updatedAt: timestampFactory(dayjs('2022-01-01')),
