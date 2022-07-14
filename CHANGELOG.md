@@ -1,3 +1,20 @@
+# [3.1.0](https://github.com/nontangent/nx-ddd/compare/v3.0.0...v3.1.0) (2022-07-13)
+
+
+### Bug Fixes
+
+* **infrastructure:** entity id bug ([398375d](https://github.com/nontangent/nx-ddd/commit/398375d0b1d021eb06d6ed87bfbd5d8a93a166a3))
+
+
+### Features
+
+* **common:** add injector ([aa7661d](https://github.com/nontangent/nx-ddd/commit/aa7661d9ae6e6e03118010ce3643f76c0de0a9a9))
+* **core:** add @nx-ddd/core project ([05f4e74](https://github.com/nontangent/nx-ddd/commit/05f4e74724f895e003be0769bceebb2a7bacd856))
+* **domain:** add boolean object decorator ([4de04d0](https://github.com/nontangent/nx-ddd/commit/4de04d0ac064612e5f4c2332708d26e3d8171f37))
+* **infrastructure:** use collectionGroup when paramMap is undefined ([5756a25](https://github.com/nontangent/nx-ddd/commit/5756a25673fdea56176b62251b5ea5ee1386809a))
+* **infrastructure:** use NxModule ([baaeb71](https://github.com/nontangent/nx-ddd/commit/baaeb717576eccb663de3f87847383d686e621a1))
+* **infrastructure:** use nxModule in google sheet ([90a8090](https://github.com/nontangent/nx-ddd/commit/90a8090027c92116f7da45194a2c59834861435f))
+
 # [3.0.0](https://github.com/nontangent/nx-ddd/compare/v2.0.0...v3.0.0) (2022-06-11)
 
 
