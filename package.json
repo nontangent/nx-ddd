@@ -10,6 +10,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
+    "scripts": "ts-node -r tsconfig-paths/register -P tools/tsconfig.tools.json",
+    "scripts:set-package-versions": "npm run scripts scripts/set-package-versions.ts",
     "e2e": "ng e2e",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
