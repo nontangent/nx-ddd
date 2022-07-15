@@ -1,4 +1,4 @@
-name: On Push Main Workflow
+name: package-on-push-to-main
 on:
   push:
     branches:
@@ -12,8 +12,15 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          cache: npm
-      - run: npm i
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
       - run: npx nx build executors
       - run: npx nx run-many --target=build --all --parallel=2
       - name: Archive production artifacts
@@ -33,9 +40,15 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          cache: npm
-      - name: Install node packages
-        run: npm i
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
       - name: Download production artifacts
         uses: actions/download-artifact@v2
       - env:
@@ -56,12 +69,20 @@ jobs:
         with:
           node-version: 16.x
           registry-url: 'https://registry.npmjs.org'
-          cache: npm
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
       - name: Download production artifacts
         uses: actions/download-artifact@v2
       - name: Set Package Version to Environment
         run: echo PACKAGE_VERSION=${{ needs.release.outputs.version }} >> $GITHUB_ENV
-      - name: Publish @nx-ddd/*
+      - run: npm run scripts:set-package-versions ${{ needs.release.outputs.version }}
+      - run: npm run publish:all
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm run publish:all
