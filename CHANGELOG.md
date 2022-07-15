@@ -1,3 +1,10 @@
+## [3.2.2](https://github.com/nontangent/nx-ddd/compare/v3.2.1...v3.2.2) (2022-07-15)
+
+
+### Bug Fixes
+
+* change version of package.json to `0.0.0-PLACEHOLDER` ([13b2b08](https://github.com/nontangent/nx-ddd/commit/13b2b080c3d1c60183b9aabc4b23358ae07d35e6))
+
 ## [3.2.1](https://github.com/nontangent/nx-ddd/compare/v3.2.0...v3.2.1) (2022-07-15)
 
 
