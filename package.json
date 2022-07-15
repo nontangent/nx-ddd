@@ -49,7 +49,7 @@
     "@angular/common": "13.3.11",
     "@angular/compiler": "13.3.11",
     "@angular/core": "13.3.11",
-    "@angular/fire": "7.0.0",
+    "@angular/fire": "^7.2.1",
     "@angular/forms": "13.3.11",
     "@angular/platform-browser": "13.3.11",
     "@angular/platform-browser-dynamic": "13.3.11",
@@ -120,6 +120,10 @@
     "ts-jest": "27.0.5",
     "ts-node": "~9.1.1",
     "typescript": "4.6.4"
+  },
+  "resolutions": {
+    "@nestjs/common": "^8.0.0",
+    "@nestjs/core": "^8.0.0"
   },
   "commitlint": {
     "extends": [
