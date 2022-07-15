@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/nontangent/nx-ddd/compare/v3.1.0...v3.2.0) (2022-07-14)
+
+
+### Features
+
+* **infrastructure:** add `@nx-ddd/infrastructure/repositories/firestore/testing` ([f372292](https://github.com/nontangent/nx-ddd/commit/f37229287172cebd8d13191a4a45622246a59a83))
+
 # [3.1.0](https://github.com/nontangent/nx-ddd/compare/v3.0.0...v3.1.0) (2022-07-13)
 
 
