@@ -1,3 +1,12 @@
+## [3.2.1](https://github.com/nontangent/nx-ddd/compare/v3.2.0...v3.2.1) (2022-07-15)
+
+
+### Bug Fixes
+
+* depenedencies version of this packages ([e60fed0](https://github.com/nontangent/nx-ddd/commit/e60fed092d438f55dce2edcbb3328f2fb650db81))
+* depenedencies version of this packages ([41f4ada](https://github.com/nontangent/nx-ddd/commit/41f4ada93df9813b8a0e628fc0d3761b6ff32e80))
+* **deps:** add support `@angular/fire@7.2` and resolutions `@nest/*[@8](https://github.com/8).0.0` ([5042c0c](https://github.com/nontangent/nx-ddd/commit/5042c0c5836a7ee37374e96741ae119e9cfdbae0))
+
 # [3.2.0](https://github.com/nontangent/nx-ddd/compare/v3.1.0...v3.2.0) (2022-07-14)
 
 
